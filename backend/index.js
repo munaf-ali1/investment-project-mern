@@ -12,7 +12,7 @@ import startDailyROICron from './cron/dailyROI.cron.js';
 import dashboardRouter from './routes/dashboard.routre.js';
 import roiRouter from './routes/roi.route.js';
 import refferalRouter from './routes/refferal.route.js';
-
+import walletRoutes from './routes/wallet.route.js';
 
 console.log('Starting server...');
 
@@ -36,6 +36,7 @@ app.use('/api/investment', investmentRouter);
 app.use('/api/dashboard', dashboardRouter);
 app.use('/api/roi', roiRouter);
 app.use('/api/referral', refferalRouter);
+app.use('/api/wallet', walletRoutes);
 
 
 const startServer = async () => {

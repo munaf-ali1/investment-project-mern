@@ -9,6 +9,7 @@ import StatCard from "../components/StatCard";
 import InvestmentTable from "../components/InvestmentTable";
 import ROITimeline from "../components/RoiTimeline";
 import { useSelector } from "react-redux";
+import AddMoneyModal from "../components/AddMoneyModal";
 const Dashboard = () => {
   const [dashboard, setDashboard] = useState(null);
   const [investments, setInvestments] = useState([]);
@@ -17,6 +18,7 @@ const Dashboard = () => {
   const [ roiChartData, setRoiChartData ] = useState([]);
   const [referralTree, setReferralTree] = useState(null);
   const user = useSelector((state) => state.user.userData);
+  const [showWalletModal, setShowWalletModal] = useState(false);
 
  
 
@@ -33,7 +35,7 @@ const referralLink = `${window.location.origin}/register?ref=${user._id}`;
 
 
   useEffect(() => {
-    const fetchData = async () => {
+    const fetchDashboardData = async () => {
       const token = localStorage.getItem('token');
       if (!token) {
         alert('No token found, please login');
@@ -114,7 +116,7 @@ setReferralTree(refRes.data);
       }
     };
 
-    fetchData();
+    fetchDashboardData();
   }, []);
 
   if (loading) {
@@ -136,7 +138,7 @@ setReferralTree(refRes.data);
     <div className="min-h-screen bg-gradient-to-br from-indigo-200 via-blue-500 to-indigo-300">
 
     
-      <Navbar />
+      <Navbar setShowWalletModal={setShowWalletModal} />
       <motion.div
   initial={{ opacity: 0, y: 20 }}
   animate={{ opacity: 1, y: 0 }}
@@ -217,6 +219,17 @@ setReferralTree(refRes.data);
   <p className="text-gray-600 mt-6">ROI data will appear after daily calculation</p>
 )}
 
+
+
+
+{showWalletModal && (
+  <AddMoneyModal
+    onClose={() => setShowWalletModal(false)}
+    onSuccess={() => window.location.reload()}
+  />
+)}
+
+ 
 
 
       

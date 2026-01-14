@@ -4,6 +4,7 @@ import Login from "./pages/Login.jsx";
 import Dashboard from "./pages/Dashboard.jsx";
 import PrivateRoute from "./components/PrivateRoute.jsx";
 import CreateInvestment from "./pages/CreateInvestment.jsx";
+import AddMoneyModal from "./components/AddMoneyModal.jsx";
 
 
 

@@ -7,7 +7,7 @@ import CreateInvestment from "./pages/CreateInvestment.jsx";
 
 
 
-export const serverUrl = "http://localhost:8000";
+export const serverUrl = "https://investment-project-backend-exzc.onrender.com";
 
 
 function App() {
